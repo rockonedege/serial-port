@@ -93,7 +93,7 @@ public:
      * Set the timeout on read/write operations.
      * To disable the timeout, call setTimeout(boost::posix_time::seconds(0));
      */
-    void setTimeout(const boost::posix_time::time_duration& t);
+    void setTimeout(const boost::asio::chrono::steady_clock::duration& t);
 
     /**
      * Write data
@@ -223,8 +223,8 @@ private:
 
     boost::asio::io_service io; ///< Io service object
     boost::asio::serial_port port; ///< Serial port object
-    boost::asio::deadline_timer timer; ///< Timer for timeout
-    boost::posix_time::time_duration timeout; ///< Read/write timeout
+    boost::asio:: steady_timer timer; ///< Timer for timeout
+    boost::asio::chrono::steady_clock::duration timeout; ///< Read/write timeout
     boost::asio::streambuf readData; ///< Holds eventual read but not consumed
     enum ReadResult result;  ///< Used by read with timeout
     size_t bytesTransferred; ///< Used by async read callback

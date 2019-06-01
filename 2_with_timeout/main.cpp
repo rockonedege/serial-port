@@ -15,8 +15,8 @@ int main(int argc, char* argv[])
 {
     try {
  
-        TimeoutSerial serial("/dev/ttyUSB0",115200);
-        serial.setTimeout(posix_time::seconds(5));
+        TimeoutSerial serial("COM3",9600);
+        serial.setTimeout(asio::chrono::seconds(5));
 
         //Text test
         serial.writeString("Hello world\r\n");
